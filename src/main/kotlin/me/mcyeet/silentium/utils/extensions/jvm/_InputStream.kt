@@ -1,4 +1,4 @@
-package me.mcyeet.templateplugin.utils.extensions.jvm
+package me.mcyeet.silentium.utils.extensions.jvm
 
 import java.io.File
 import java.io.InputStream

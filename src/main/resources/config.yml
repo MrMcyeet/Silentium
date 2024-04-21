@@ -1,1 +1,5 @@
-Debug: false
+# This sets if debug messages should be printed to console or not
+Debug: true
+
+# This is the time in minutes that the IP blacklist should be cached
+Cache_Time: 360
