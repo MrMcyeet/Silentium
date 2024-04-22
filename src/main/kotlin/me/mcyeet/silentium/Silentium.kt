@@ -4,8 +4,6 @@ import com.github.benmanes.caffeine.cache.Caffeine
 import com.github.benmanes.caffeine.cache.LoadingCache
 import com.github.retrooper.packetevents.PacketEvents
 import com.github.retrooper.packetevents.event.PacketListenerAbstract
-import dev.jorel.commandapi.CommandAPI
-import dev.jorel.commandapi.CommandAPIBukkitConfig
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder
 import me.mcyeet.silentium.utils.Command
 import me.mcyeet.silentium.utils.DebugLogger
@@ -28,7 +26,7 @@ class Silentium: JavaPlugin() {
         lateinit var Plugin: JavaPlugin
 
         private lateinit var IPBlacklistCache: LoadingCache<String, List<InetAddress>>
-        val IPBlacklist: List<InetAddress> get() = IPBlacklistCache.get("")
+        val IPBlacklist: List<InetAddress> get() = IPBlacklistCache.get("")!!
     }
 
     override fun onLoad() {
@@ -42,7 +40,7 @@ class Silentium: JavaPlugin() {
         PacketEvents.getAPI().settings.checkForUpdates(false)
 
         //Load CommandAPI
-        CommandAPI.onLoad(CommandAPIBukkitConfig(Plugin).silentLogs(true))
+        //CommandAPI.onLoad(CommandAPIBukkitConfig(Plugin).silentLogs(true))
 
         IPBlacklistCache = Caffeine.newBuilder().refreshAfterWrite(Config.get("Cache_Time"), TimeUnit.MINUTES).build { _ ->
             debug("Updating IP blacklist...")
@@ -93,7 +91,7 @@ class Silentium: JavaPlugin() {
         PacketEvents.getAPI().terminate()
 
         //Terminate CommandAPI
-        CommandAPI.onDisable()
+        //CommandAPI.onDisable()
 
         DebugLogger.fileWriter.close()
     }
