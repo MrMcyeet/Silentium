@@ -84,7 +84,7 @@ class Silentium: JavaPlugin() {
 
         //This exists here to make caffeine load the IPBlacklist for the first time, since I think its lazy
         logger.info("Loading IP blacklist...")
-        logger.info("  Loaded ${IPBlacklist.size} blacklisted IPs!")
+        logger.info("  Loaded ${IPBlacklist.size} IP addresses into the blacklist!")
     }
 
     override fun onDisable() {

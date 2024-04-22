@@ -2,6 +2,10 @@ package me.mcyeet.silentium.utils
 
 import me.mcyeet.silentium.Silentium.Companion.Config
 import me.mcyeet.silentium.Silentium.Companion.Plugin
+import org.bukkit.Bukkit
+import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 object DebugLogger {
 
@@ -16,6 +20,16 @@ object DebugLogger {
             return
 
         Plugin.logger.warning("[DEBUG] $data")
+        Bukkit.getScheduler().runTaskAsynchronously(Plugin, Runnable {
+            File(Plugin.dataFolder, "debug.log").apply {
+                this.createNewFile()
+
+                val formatter = DateTimeFormatter.ofPattern("h:mma MM/dd")
+                val dateTime = LocalDateTime.now().format(formatter).replace("AM", "am").replace("PM", "pm")
+
+                this.appendText("[$dateTime] $data\n")
+            }
+        })
     }
 
 }
