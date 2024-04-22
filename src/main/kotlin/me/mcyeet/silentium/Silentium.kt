@@ -8,6 +8,7 @@ import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIBukkitConfig
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder
 import me.mcyeet.silentium.utils.Command
+import me.mcyeet.silentium.utils.DebugLogger
 import me.mcyeet.silentium.utils.DebugLogger.debug
 import me.mcyeet.silentium.utils.YamlDocument
 import org.bukkit.Bukkit
@@ -93,5 +94,7 @@ class Silentium: JavaPlugin() {
 
         //Terminate CommandAPI
         CommandAPI.onDisable()
+
+        DebugLogger.fileWriter.close()
     }
 }

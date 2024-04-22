@@ -8,6 +8,11 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 object DebugLogger {
+    val fileWriter by lazy {
+        File(Plugin.dataFolder, "debug.log").apply {
+            createNewFile()
+        }.bufferedWriter()
+    }
 
     /**
      * Logs a debug message if debugging is enabled in the configuration.
@@ -21,13 +26,12 @@ object DebugLogger {
 
         Plugin.logger.warning("[DEBUG] $data")
         Bukkit.getScheduler().runTaskAsynchronously(Plugin, Runnable {
-            File(Plugin.dataFolder, "debug.log").apply {
-                this.createNewFile()
+            val formatter = DateTimeFormatter.ofPattern("h:mma MM/dd")
+            val dateTime = LocalDateTime.now().format(formatter).replace("AM", "am").replace("PM", "pm")
 
-                val formatter = DateTimeFormatter.ofPattern("h:mma MM/dd")
-                val dateTime = LocalDateTime.now().format(formatter).replace("AM", "am").replace("PM", "pm")
-
-                this.appendText("[$dateTime] $data\n")
+            synchronized(fileWriter) {
+                fileWriter.appendLine("[$dateTime] $data")
+                fileWriter.flush()
             }
         })
     }
