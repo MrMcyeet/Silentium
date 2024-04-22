@@ -1,6 +1,3 @@
-import org.objectweb.asm.tree.ClassNode
-import org.objectweb.asm.ClassReader
-
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     kotlin("jvm") version "1.9.0"
@@ -36,19 +33,9 @@ dependencies {
 }
 
 tasks.processResources {
-    val main = File("${buildDir}/classes/kotlin/main").walkTopDown().filter { it.isFile && it.extension == "class" }
-        .map { ClassNode().apply { ClassReader(it.readBytes()).accept(this, 0) } }
-        .first { it.superName == "org/bukkit/plugin/java/JavaPlugin" }
-        .name.replace("/", ".")
-
-    val name = main.substringAfterLast(".")
-
-    val props = mapOf(
-        "version" to version,
-        "main" to main,
-        "name" to name)
-
+    val props = mapOf("version" to version)
     inputs.properties(props)
+
     filteringCharset = "UTF-8"
     filesMatching("plugin.yml") {
         expand(props)

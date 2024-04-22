@@ -1,6 +1,6 @@
-name: "$name"
+name: "Silentium"
 version: "${version}"
-main: "${main}"
+main: "me.mcyeet.silentium.Silentium"
 api-version: "1.16"
 softdepend: [Vault, PacketEvents]
 authors: [MrMcyeet]
