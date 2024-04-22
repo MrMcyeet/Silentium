@@ -47,7 +47,8 @@ tasks.processResources {
 }
 
 tasks.register<ShadowJar>("legacy") {
-    configurations = listOf(project.configurations.getByName("runtimeClasspath"))
+    from(tasks.shadowJar.get().project.sourceSets.main.get().output)
+    configurations = tasks.shadowJar.get().configurations
     archiveClassifier.set("legacy")
 
     exclude("**/*.kotlin_builtins")
