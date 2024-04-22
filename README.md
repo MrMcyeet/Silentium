@@ -39,7 +39,7 @@ Once installed and configured, Silentium will begin to automatically block packe
 
 ### Prerequisites
 
-- Java 17
+- Java 8
 - Gradle
 
 ### Build Instructions
