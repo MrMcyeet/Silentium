@@ -1,12 +1,6 @@
 package me.mcyeet.silentium.commands
 
-import me.mcyeet.silentium.Silentium.Companion.Config
-import me.mcyeet.silentium.Silentium.Companion.Plugin
 import me.mcyeet.silentium.utils.Command
-import me.mcyeet.silentium.utils.YamlDocument
-import org.bukkit.command.CommandSender
-import java.io.File
-import java.io.FileNotFoundException
 
 object Reload: Command {
     override fun register() {

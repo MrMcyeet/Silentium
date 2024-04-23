@@ -9,9 +9,7 @@ import me.mcyeet.silentium.utils.Command
 import me.mcyeet.silentium.utils.DebugLogger
 import me.mcyeet.silentium.utils.DebugLogger.debug
 import me.mcyeet.silentium.utils.YamlDocument
-import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
-import org.bukkit.scheduler.BukkitTask
 import org.reflections.Reflections
 import java.io.File
 import java.io.FileNotFoundException

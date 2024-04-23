@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    kotlin("kapt") version "1.9.0"
     kotlin("jvm") version "1.9.0"
     java
 }
@@ -24,6 +25,9 @@ repositories {
 
 dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+
+    compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
+    kapt("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
 
     compileOnly("com.github.retrooper.packetevents:spigot:2.0.2")
     //compileOnly("dev.jorel:commandapi-bukkit-shade:9.3.0")

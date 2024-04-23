@@ -29,10 +29,8 @@ object DebugLogger {
             val formatter = DateTimeFormatter.ofPattern("h:mma MM/dd")
             val dateTime = LocalDateTime.now().format(formatter).replace("AM", "am").replace("PM", "pm")
 
-            synchronized(fileWriter) {
-                fileWriter.appendLine("[$dateTime] $data")
-                fileWriter.flush()
-            }
+            fileWriter.appendLine("[$dateTime] $data")
+            fileWriter.flush()
         })
     }
 
